@@ -18,11 +18,5 @@ dev_dependencies:
 flutter:
   plugin:
     platforms:
-      windows:
-        ffiPlugin: true
-      linux:
-        ffiPlugin: true
-      macos:
-        ffiPlugin: true
-      ios:
+      android:
         ffiPlugin: true
