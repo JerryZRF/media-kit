@@ -96,10 +96,9 @@ class _VideoViewParametersScreenState extends State<VideoViewParametersScreen> {
                     if (timer.tick % 3 == 0 /* Every 3 seconds. */) {
                       key.currentState?.update(
                         subtitleViewConfiguration: SubtitleViewConfiguration(
-                            style: TextStyle(
                           // font size increases every 3 seconds
                           fontSize: fontSizeFromTick(timer.tick),
-                        )),
+                        ),
                       );
                     }
                     if (mounted) {

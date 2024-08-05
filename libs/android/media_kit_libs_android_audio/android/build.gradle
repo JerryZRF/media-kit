@@ -45,6 +45,12 @@ android {
     dependencies {
         implementation fileTree(dir: "$buildDir/output", include: "*.jar")
     }
+
+    defaultConfig {
+        ndk {
+            abiFilters 'arm64-v8a'
+        }
+    }
 }
 
 task downloadDependencies(type: Exec) {
@@ -58,7 +64,7 @@ task downloadDependencies(type: Exec) {
     
     // Download all *.jar dependencies & verify their MD5 checksums.
 
-    def urlDefaultARM64 = "https://github.com/media-kit/libmpv-android-audio-build/releases/download/v1.1.5/default-arm64-v8a.jar"
+    def urlDefaultARM64 = "https://github.com/JerryZRF/libmpv-android-audio-build/releases/download/v1.1.5/default-arm64-v8a.jar"
 
     def destDefaultARM64 = file("$buildDir/v1.1.5/default-arm64-v8a.jar")
 

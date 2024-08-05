@@ -6,6 +6,7 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:media_kit_video/src/subtitle/text.dart';
 
 import 'package:media_kit_video/src/video_controller/video_controller.dart';
 
@@ -99,14 +100,14 @@ class SubtitleViewState extends State<SubtitleView> {
             padding: padding,
             duration: duration,
             alignment: Alignment.bottomCenter,
-            child: Text(
+            child: StrokeText(
               [
                 for (final line in subtitle)
                   if (line.trim().isNotEmpty) line.trim(),
               ].join('\n'),
-              style: widget.configuration.style,
-              textAlign: widget.configuration.textAlign,
-              textScaleFactor: textScaleFactor,
+              fontSize: widget.configuration.fontSize,
+              color: widget.configuration.color,
+              borderColor: widget.configuration.borderColor,
             ),
           ),
         );
@@ -125,11 +126,14 @@ class SubtitleViewConfiguration {
   /// Whether the subtitles should be visible or not.
   final bool visible;
 
-  /// The text style to be used for the subtitles.
-  final TextStyle style;
+  /// The text color to be used for the subtitles.
+  final Color color;
 
-  /// The text alignment to be used for the subtitles.
-  final TextAlign textAlign;
+  /// The border color to be used for the subtitles.
+  final Color? borderColor;
+
+  /// The text size to be used for the subtitles;
+  final double fontSize;
 
   /// The text scale factor to be used for the subtitles.
   final double? textScaleFactor;
@@ -140,16 +144,9 @@ class SubtitleViewConfiguration {
   /// {@macro subtitle_view_configuration}
   const SubtitleViewConfiguration({
     this.visible = true,
-    this.style = const TextStyle(
-      height: 1.4,
-      fontSize: 32.0,
-      letterSpacing: 0.0,
-      wordSpacing: 0.0,
-      color: Color(0xffffffff),
-      fontWeight: FontWeight.normal,
-      backgroundColor: Color(0xaa000000),
-    ),
-    this.textAlign = TextAlign.center,
+    this.color = Colors.pink,
+    this.borderColor = Colors.white,
+    this.fontSize = 40,
     this.textScaleFactor,
     this.padding = const EdgeInsets.fromLTRB(
       16.0,
