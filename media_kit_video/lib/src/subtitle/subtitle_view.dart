@@ -6,7 +6,7 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:media_kit_video/src/subtitle/text.dart';
+import 'package:media_kit_video/src/subtitle/stroke_text.dart';
 
 import 'package:media_kit_video/src/video_controller/video_controller.dart';
 
@@ -86,14 +86,14 @@ class SubtitleViewState extends State<SubtitleView> {
     return LayoutBuilder(
       builder: (context, constraints) {
         // Calculate the visible text scale factor.
-        final textScaleFactor = widget.configuration.textScaleFactor ??
-            MediaQuery.of(context).textScaleFactor *
-                sqrt(
-                  ((constraints.maxWidth * constraints.maxHeight) /
-                          (kTextScaleFactorReferenceWidth *
-                              kTextScaleFactorReferenceHeight))
-                      .clamp(0.0, 1.0),
-                );
+        // final textScaleFactor = widget.configuration.textScaleFactor ??
+        //     MediaQuery.of(context).textScaleFactor *
+        //         sqrt(
+        //           ((constraints.maxWidth * constraints.maxHeight) /
+        //                   (kTextScaleFactorReferenceWidth *
+        //                       kTextScaleFactorReferenceHeight))
+        //               .clamp(0.0, 1.0),
+        //         );
         return Material(
           color: Colors.transparent,
           child: AnimatedContainer(
@@ -108,6 +108,7 @@ class SubtitleViewState extends State<SubtitleView> {
               fontSize: widget.configuration.fontSize,
               color: widget.configuration.color,
               borderColor: widget.configuration.borderColor,
+              fontFamily: widget.configuration.fontFamily,
             ),
           ),
         );
@@ -132,11 +133,13 @@ class SubtitleViewConfiguration {
   /// The border color to be used for the subtitles.
   final Color? borderColor;
 
-  /// The text size to be used for the subtitles;
+  /// The text size to be used for the subtitles.
   final double fontSize;
 
+  // The font to be used for the subtitles.
+  final String? fontFamily;
+
   /// The text scale factor to be used for the subtitles.
-  final double? textScaleFactor;
 
   /// The padding to be used for the subtitles.
   final EdgeInsets padding;
@@ -147,7 +150,7 @@ class SubtitleViewConfiguration {
     this.color = Colors.pink,
     this.borderColor = Colors.white,
     this.fontSize = 40,
-    this.textScaleFactor,
+    this.fontFamily,
     this.padding = const EdgeInsets.fromLTRB(
       16.0,
       0.0,

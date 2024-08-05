@@ -58,9 +58,9 @@ task downloadDependencies(type: Exec) {
     
     // Download all *.jar dependencies & verify their MD5 checksums.
 
-    def urlDefaultARM64 = "https://github.com/JerryZRF/libmpv-android-video-build/releases/download/0.1.0/default-arm64-v8a.jar"
+    def urlDefaultARM64 = "https://github.com/JerryZRF/libmpv-android-video-build/releases/download/0.1.1/default-arm64-v8a.jar"
 
-    def destDefaultARM64 = file("$buildDir/v0.1.0/default-arm64-v8a.jar")
+    def destDefaultARM64 = file("$buildDir/v0.1.1/default-arm64-v8a.jar")
 
     if (!destDefaultARM64.exists()) {
         destDefaultARM64.parentFile.mkdirs()

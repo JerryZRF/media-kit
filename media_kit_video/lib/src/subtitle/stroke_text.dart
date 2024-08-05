@@ -5,11 +5,13 @@ class StrokeText extends StatelessWidget {
   final Color color;
   final Color? borderColor;
   final double fontSize;
+  final String? fontFamily;
 
   const StrokeText(
     this.text, {
     this.color = Colors.pink,
     this.borderColor = const Color.fromRGBO(255, 255, 255, 1),
+    this.fontFamily,
     this.fontSize = 16,
     Key? key,
   }) : super(key: key);
@@ -27,6 +29,7 @@ class StrokeText extends StatelessWidget {
                 text,
                 softWrap: false,
                 style: TextStyle(
+                  fontFamily: fontFamily,
                   fontSize: fontSize,
                   overflow: TextOverflow.visible,
                   foreground: Paint()
@@ -41,6 +44,7 @@ class StrokeText extends StatelessWidget {
                 text,
                 softWrap: false,
                 style: TextStyle(
+                  fontFamily: fontFamily,
                   fontSize: fontSize,
                   color: color,
                   overflow: TextOverflow.visible,
